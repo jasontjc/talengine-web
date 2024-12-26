@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  color: var(--foreground);
+  background: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  background-image: url('/images/login-bg@2x.jpg');
+  background-position: center center;
+  background-size: 1440px 1024px;
+  background-repeat: no-repeat;
+  /* background-repeat: repeat-y; */
+}
