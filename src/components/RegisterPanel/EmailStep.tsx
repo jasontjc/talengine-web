@@ -3,25 +3,35 @@
  * @Author: TangJiaChen tangjiachen@sundear.com
  * @Date: 2024-12-26 16:35:27
  * @LastEditors: TangJiaChen tangjiachen@sundear.com
- * @LastEditTime: 2024-12-27 00:42:25
+ * @LastEditTime: 2024-12-27 11:45:04
  * @FilePath: /talengine-web/src/app/login/components/LoginPanel/index.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
-import { useRef, useState, type FC } from 'react'
+import { useRef, useState, useEffect, type FC } from 'react'
 import Image from 'next/image'
 import LabelInput, { LabelInputRefType } from '@/components/LabelInput'
 import useRegex from '@/hooks/useRegex'
 
 type Props = {
+  email: string
   onFinish: (email: string) => void
 }
 
 const EmailStep: FC<Props> = (props: Props) => {
-  const { onFinish } = props
+  const { email: initialEmail, onFinish } = props
   const { validEmail } = useRegex()
-  const [email, setEmail] = useState<string>('')
+  const [email, setEmail] = useState<string>('jason.tang880414@gmail.com')
   const [emailErrorMessage, setEmailErrorMessage] = useState<string>('')
   const inputRef = useRef<LabelInputRefType | null>(null)
+
+  const init = (): (() => void) => {
+    return destroy
+  }
+
+  const destroy = (): void => {
+    setEmail('')
+    setEmailErrorMessage('')
+  }
 
   const handleEmailFocus = (): void => {
     setEmailErrorMessage('')
@@ -51,6 +61,14 @@ const EmailStep: FC<Props> = (props: Props) => {
 
     onFinish(email)
   }
+
+  useEffect((): void => {
+    if (initialEmail) {
+      setEmail(initialEmail)
+    }
+  }, [initialEmail])
+
+  useEffect(init, [])
 
   return (
     <div className="w-[420px] flex flex-col items-center">

@@ -18,9 +18,12 @@ body {
   width: 100vw;
   height: 100vh;
   color: var(--foreground);
-  background: var(--foreground);
+  background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
-  background-image: url('/images/login-bg@2x.jpg');
+}
+
+.register-container {
+  background-image: url('/images/register-bg@2x.jpg');
   background-position: center center;
   /* background-size: 1440px 1024px; */
   background-size: cover;
