@@ -1,6 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@layer utilities {
+  .bg-clip-text {
+    background-clip: text;
+    -webkit-background-clip: text;
+  }
+  .text-transparent {
+    -webkit-text-fill-color: transparent;
+  }
+}
 
 :root {
   --background: #ffffff;
@@ -15,7 +24,77 @@
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
+  width: 100vw;
+  height: 100vh;
   font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
+
+.home-bg {
+  /* width: 100vw; */
+  background-image: url('/images/home-bg@2x.png');
+  background-position: top;
+  background-size: 100% 5764px;
+  background-repeat: no-repeat;
+}
+
+.content {
+  width: 1200px;
+  margin: 0 auto;
+  padding-top: 20px;
+}
+
+.intro-card {
+  transition: all linear 0.1s;
+  position: relative;
+  overflow: hidden;
+}
+
+.intro-card:hover {
+  border: 1px solid #5533b3;
+  background-color: transparent;
+  box-shadow: 0px 16px 40px 0px rgba(119, 57, 255, 0.36);
+  transform: translateY(-24px);
+  transition: all linear 0.1s;
+}
+
+.intro-card:hover::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 280px;
+  height: 260px;
+  border-radius: 16px;
+  background: linear-gradient(186deg, rgba(11, 5, 26, 0) 2.22%, #5e28f3 96.33%);
+}
+
+.intro-card .truncate-multiline {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4; /* 默认显示 4 行 */
+  overflow: hidden;
+}
+
+.intro-card:hover .truncate-multiline {
+  -webkit-line-clamp: 11; /* hover 时显示 11 行 */
+}
+
+.fixed-salary-panel {
+  width: 1200px;
+  height: 230px;
+  border-radius: 16px;
+  background-image: url('/images/fixed-salary-panel@2x.jpg');
+  background-size: 1200px 230px;
+  background-repeat: no-repeat;
+}
+
+/* .truncate-multiline {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-clamp: 4;
+} */

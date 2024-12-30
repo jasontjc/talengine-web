@@ -3,7 +3,7 @@
  * @Author: TangJiaChen tangjiachen@sundear.com
  * @Date: 2024-12-26 16:35:27
  * @LastEditors: TangJiaChen tangjiachen@sundear.com
- * @LastEditTime: 2024-12-27 11:45:04
+ * @LastEditTime: 2024-12-28 00:25:53
  * @FilePath: /talengine-web/src/app/login/components/LoginPanel/index.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -93,7 +93,7 @@ const EmailStep: FC<Props> = (props: Props) => {
         />
       </div>
       <button
-        className="w-full h-[56px] bg-main-blue rounded-[40px] text-white font-bold flex items-center justify-center"
+        className="w-full h-[56px] bg-main-blue rounded-[40px] cursor-pointer text-white font-bold flex items-center justify-center"
         onClick={handleContinue}
       >
         Continu
