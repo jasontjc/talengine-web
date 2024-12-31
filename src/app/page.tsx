@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, type FC } from 'react'
 import Image from 'next/image'
-import { FooterLinks, IntroInfos } from '@/config/constants'
+import { FooterLinks, IntroInfos, MenuInfos } from '@/config/constants'
 
 const Home: FC = () => {
   useEffect((): void => {
@@ -24,7 +24,7 @@ const Home: FC = () => {
   }, [])
 
   return (
-    <div className="w-screen home-bg h-[5764px]">
+    <div className="w-screen home-bg h-[5764px] bg-main-black">
       <div className="relative content">
         {/* header */}
         <div className="w-full h-[48px] flex justify-between items-center">
@@ -36,13 +36,13 @@ const Home: FC = () => {
               height={48}
             />
             <ul className="ml-[60px] flex">
-              {['Talents', 'Jobs'].map((val) => (
-                <li className="mr-[57px] last:mr-0" key={val}>
+              {MenuInfos.map((opt) => (
+                <li className="mr-[57px] last:mr-0" key={opt.title}>
                   <a
                     className="cusror-pointer text-white font-[18px] leading-[28px]"
                     href=""
                   >
-                    {val}
+                    {opt.title}
                   </a>
                 </li>
               ))}
@@ -51,13 +51,13 @@ const Home: FC = () => {
           <div className="h-full flex justify-end items-center">
             <a
               className="w-[120px] h-[36px] cursor-pointer border border-white rounded-[40px] text-white text-[16px] text-center leading-[34px] font-bold"
-              href=""
+              href="/recruiter"
             >
               Hire Talents
             </a>
             <a
               className="w-[120px] h-[36px] cursor-pointer ml-[24px] border border-main-blue bg-main-blue rounded-[40px] text-white text-[16px] text-center leading-[34px] font-bold"
-              href=""
+              href="/seeker"
             >
               Get started
             </a>
@@ -509,12 +509,12 @@ const Home: FC = () => {
             width={416}
             height={240}
           />
-          <div className="w-[624px] h-[108px] absolute top-[60px] right-[98px] flex flex-col items-center">
+          <div className="h-[108px] absolute top-[60px] right-[98px] flex flex-col items-center">
             <p
               className="text-black7-F0 text-[28px] leading-[54px] font-semibold"
               style={{ letterSpacing: 0 }}
             >
-              We pay you what you believe is fair.{' '}
+              We pay you what you believe is fair.
             </p>
             <p
               className="text-black7-F0 text-[28px] leading-[54px] font-semibold"

@@ -2,10 +2,15 @@
  * @Author: TangJiaChen tangjiachen@sundear.com
  * @Date: 2024-12-27 00:09:14
  * @LastEditors: TangJiaChen tangjiachen@sundear.com
- * @LastEditTime: 2024-12-30 17:27:57
+ * @LastEditTime: 2024-12-31 13:42:27
  * @FilePath: /talengine-web/src/config/constants.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
+export const MenuInfos = [
+  { title: 'Talents', src: '' },
+  { title: 'Jobs', src: '' }
+]
+
 export const IntroInfos = [
   {
     avatar: '/images/avatar-example@2x.png',
@@ -116,6 +121,39 @@ export const FooterLinks = [
         src: ''
       }
     ]
+  }
+]
+
+export const SeekerMenuInfos = [
+  {
+    label: 'My Profile',
+    key: 'my-profile',
+    path: '/seeker/profile',
+    icon: '/icons/my-profile.svg'
+  },
+  {
+    label: 'Active Jobs',
+    key: 'active-jobs',
+    path: '/seeker/jobs',
+    icon: '/icons/active-jobs.svg'
+  },
+  {
+    label: 'AI Mock',
+    key: 'ai-mock',
+    path: '/seeker/ai-mock',
+    icon: '/icons/ai-mock.svg'
+  },
+  {
+    label: 'AI Training',
+    key: 'ai-training',
+    path: '/seeker/ai-training',
+    icon: '/icons/ai-training.svg'
+  },
+  {
+    label: 'AI Resume',
+    key: 'ai-resume',
+    path: '/seeker/ai-resume',
+    icon: '/icons/ai-resume.svg'
   }
 ]
 
