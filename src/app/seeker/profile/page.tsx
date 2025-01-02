@@ -3,7 +3,7 @@
  * @Author: TangJiaChen tangjiachen@sundear.com
  * @Date: 2024-12-26 16:21:31
  * @LastEditors: TangJiaChen tangjiachen@sundear.com
- * @LastEditTime: 2024-12-31 16:57:24
+ * @LastEditTime: 2025-01-02 13:24:13
  * @FilePath: /talengine-web/src/app/login.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -130,10 +130,10 @@ const Profile: FC = () => {
         </div>
         {/* tab group */}
         <div className="w-full mt-[98] flex flex-col">
-          <ul className="flex flex-row">
+          <ul className="flex flex-row border-b border-[#E4E3E7]">
             {ProfileTabs.map((tab) => (
               <li
-                className={`cursor-pointer text-[24px] border-b-[3px]  pb-[14px] leading-[30px] mr-[60px] last:mr-[60px] ${currTab === tab.key ? 'text-black1-11 border-main-blue' : 'text-black4-99 border-transparent'}`}
+                className={`cursor-pointer text-[24px] border-b-[3px] pb-[14px] leading-[30px] mr-[60px] last:mr-[60px] ${currTab === tab.key ? 'text-black1-11 border-main-blue' : 'text-black4-99 border-transparent'}`}
                 key={tab.key}
                 onClick={() => handleTabClick(tab)}
               >

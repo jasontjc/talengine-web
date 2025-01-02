@@ -2,12 +2,12 @@
  * @Author: TangJiaChen tangjiachen@sundear.com
  * @Date: 2024-12-27 23:23:13
  * @LastEditors: TangJiaChen tangjiachen@sundear.com
- * @LastEditTime: 2024-12-28 21:41:00
+ * @LastEditTime: 2025-01-02 14:51:35
  * @FilePath: /talengine-web/src/components/Dropdown/index.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 import Image from 'next/image'
-import { useState, useRef, useEffect, type FC } from 'react'
+import { useState, useRef, useEffect, type FC, ChangeEvent } from 'react'
 
 export type DropdownOptionProps = {
   label: string
@@ -20,7 +20,9 @@ type Props = {
   value: string | [number, number]
   placeholder: string
   options?: DropdownOptionProps[]
-  onChange?: (option: DropdownOptionProps) => void
+  onChange?: (
+    option: DropdownOptionProps | ChangeEvent<HTMLInputElement>
+  ) => void
 }
 
 const Dropdown: FC<Props> = (props: Props) => {
@@ -35,9 +37,13 @@ const Dropdown: FC<Props> = (props: Props) => {
   }
 
   const handleSelect = (option: DropdownOptionProps): void => {
-    onChange?.(option)
+    onChange?.(option as DropdownOptionProps)
     console.log(`你选择了：${option}`)
     setIsOpen(false)
+  }
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
+    onChange?.(e as ChangeEvent<HTMLInputElement>)
   }
 
   // 点击外部关闭下拉框
@@ -71,6 +77,24 @@ const Dropdown: FC<Props> = (props: Props) => {
       }
     }
   }, [isOpen])
+
+  if (type === 'input') {
+    return (
+      <div className="relative w-full pt-[7px] flex flex-col" ref={dropdownRef}>
+        <label className="text-black3-66 text-[14px] leading-[18px]">
+          {label}
+        </label>
+        <div className="w-full pt-[14px] pb-[14px] cursor-pointer border-b border-[#E4E3E7] flex justify-between items-center">
+          <input
+            className="text-black1-11 outline-none text-[18px] leading-[26px] font-bold placeholder:text-black4-99 placeholder:font-normal"
+            value={value as string}
+            placeholder={placeholder}
+            onChange={handleChange}
+          />
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className="relative w-full pt-[7px] flex flex-col" ref={dropdownRef}>

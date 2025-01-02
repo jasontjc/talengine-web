@@ -3,7 +3,7 @@
  * @Author: TangJiaChen tangjiachen@sundear.com
  * @Date: 2024-12-29 00:25:46
  * @LastEditors: TangJiaChen tangjiachen@sundear.com
- * @LastEditTime: 2024-12-29 00:47:33
+ * @LastEditTime: 2025-01-02 10:52:04
  * @FilePath: /talengine-web/src/app/register/process/components/Step3/index.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -45,7 +45,7 @@ const Step3: FC<Props> = (props: Props) => {
               Your op skills library is being generated.
             </p>
             <p className="text-black2-44 text-[14px] leading-[18px]">
-              Please wait a few minutes to check in{' '}
+              Please wait a few minutes to check in
             </p>
           </div>
           <h5 className="mt-[8px] text-black1-11 font-bold leading-[22px]">

@@ -2,7 +2,7 @@
  * @Author: TangJiaChen tangjiachen@sundear.com
  * @Date: 2024-12-26 13:30:11
  * @LastEditors: TangJiaChen tangjiachen@sundear.com
- * @LastEditTime: 2024-12-30 17:50:45
+ * @LastEditTime: 2025-01-02 10:55:22
  * @FilePath: /talengine-web/tailwind.config.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -37,6 +37,10 @@ export default {
       scroll: 'scroll 20s linear infinite'
     },
     keyframes: {
+      spin: {
+        from: { transform: 'rotate(0deg)' },
+        to: { transform: 'rotate(360deg)' }
+      },
       scroll: {
         '0%': { transform: 'translateX(0)' },
         '100%': { transform: 'translateX(-50%)' }
