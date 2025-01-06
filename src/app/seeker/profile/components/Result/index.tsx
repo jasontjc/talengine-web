@@ -100,7 +100,10 @@ const Result: FC<Props> = (props: Props) => {
     }
   }
 
-  const handleAppendSkillModalConfirm = (val: string, next: (isSucc: boolean) => void): void => {
+  const handleAppendSkillModalConfirm = (
+    val: string,
+    next: (isSucc: boolean) => void
+  ): void => {
     // TODO
 
     next(true)

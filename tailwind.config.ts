@@ -2,22 +2,27 @@
  * @Author: TangJiaChen tangjiachen@sundear.com
  * @Date: 2024-12-26 13:30:11
  * @LastEditors: TangJiaChen tangjiachen@sundear.com
- * @LastEditTime: 2025-01-02 10:55:22
+ * @LastEditTime: 2025-01-06 17:08:15
  * @FilePath: /talengine-web/tailwind.config.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 import type { Config } from 'tailwindcss'
 
 export default {
+  darkMode: ['class'],
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}'
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './node_modules/@shadcn/ui/**/*.{js,ts,jsx,tsx}'
   ],
   theme: {
     extend: {
       colors: {
-        primary: '#5E28F3',
+        primary: {
+          DEFAULT: 'var(--primary)',
+          foreground: 'var(--primary-foreground)'
+        },
         background: 'var(--background)',
         foreground: 'var(--foreground)',
         'black1-11': '#1F1C27',
@@ -29,7 +34,46 @@ export default {
         'black7-F0': '#F0F0F1',
         'black8-F4': '#F4F4F5',
         'main-blue': '#5E28F3',
-        'main-black': '#0B051A'
+        'main-black': '#0B051A',
+        card: {
+          DEFAULT: 'hsl(var(--card))',
+          foreground: 'hsl(var(--card-foreground))'
+        },
+        popover: {
+          DEFAULT: 'hsl(var(--popover))',
+          foreground: 'hsl(var(--popover-foreground))'
+        },
+        secondary: {
+          DEFAULT: 'hsl(var(--secondary))',
+          foreground: 'hsl(var(--secondary-foreground))'
+        },
+        muted: {
+          DEFAULT: 'hsl(var(--muted))',
+          foreground: 'hsl(var(--muted-foreground))'
+        },
+        accent: {
+          DEFAULT: 'hsl(var(--accent))',
+          foreground: 'hsl(var(--accent-foreground))'
+        },
+        destructive: {
+          DEFAULT: 'hsl(var(--destructive))',
+          foreground: 'hsl(var(--destructive-foreground))'
+        },
+        border: 'hsl(var(--border))',
+        input: 'hsl(var(--input))',
+        ring: 'hsl(var(--ring))',
+        chart: {
+          '1': 'hsl(var(--chart-1))',
+          '2': 'hsl(var(--chart-2))',
+          '3': 'hsl(var(--chart-3))',
+          '4': 'hsl(var(--chart-4))',
+          '5': 'hsl(var(--chart-5))'
+        }
+      },
+      borderRadius: {
+        lg: 'var(--radius)',
+        md: 'calc(var(--radius) - 2px)',
+        sm: 'calc(var(--radius) - 4px)'
       }
     },
     animation: {
@@ -38,12 +82,20 @@ export default {
     },
     keyframes: {
       spin: {
-        from: { transform: 'rotate(0deg)' },
-        to: { transform: 'rotate(360deg)' }
+        from: {
+          transform: 'rotate(0deg)'
+        },
+        to: {
+          transform: 'rotate(360deg)'
+        }
       },
       scroll: {
-        '0%': { transform: 'translateX(0)' },
-        '100%': { transform: 'translateX(-50%)' }
+        '0%': {
+          transform: 'translateX(0)'
+        },
+        '100%': {
+          transform: 'translateX(-50%)'
+        }
       }
     }
   },
@@ -52,9 +104,5 @@ export default {
       display: ['hover', 'group-hover']
     }
   },
-  plugins: [
-    // require('@tailwindcss/forms'),
-    // require('@tailwindcss/typography'),
-    // require('tailwindcss-text-fill')() // 添加插件支持
-  ]
+  plugins: [require('tailwindcss-animate')]
 } satisfies Config

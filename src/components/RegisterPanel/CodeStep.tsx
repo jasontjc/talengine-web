@@ -3,11 +3,18 @@
  * @Author: TangJiaChen tangjiachen@sundear.com
  * @Date: 2024-12-26 16:35:27
  * @LastEditors: TangJiaChen tangjiachen@sundear.com
- * @LastEditTime: 2024-12-27 11:42:25
+ * @LastEditTime: 2025-01-06 16:42:31
  * @FilePath: /talengine-web/src/app/login/components/LoginPanel/index.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
-import { useEffect, useRef, useState, type FC, type ChangeEvent } from 'react'
+import {
+  useEffect,
+  useRef,
+  useState,
+  type FC,
+  type ChangeEvent,
+  type ClipboardEvent
+} from 'react'
 
 type Props = {
   email: string
@@ -71,8 +78,36 @@ const CodeStep: FC<Props> = (props: Props) => {
     onFinish(code.join(''))
   }
 
+  const handlePaste = (
+    e: ClipboardEvent<HTMLInputElement>,
+    index: number
+  ): void => {
+    e.preventDefault() // 阻止默认的粘贴行为
+    const pasteData = e.clipboardData?.getData('text') || '' // 获取粘贴的内容
+
+    if (!pasteData) return
+
+    const newCode = [...code] // 创建一个新的数组以存储验证码
+
+    for (let i = 0; i < pasteData.length; i++) {
+      if (index + i < newCode.length) {
+        newCode[index + i] = pasteData[i] // 将粘贴的字符逐一分配到输入框
+      }
+    }
+
+    setCode(newCode) // 更新验证码状态
+    const validateResult = newCode.every((val) => !!val) // 检查是否所有输入框都已填满
+
+    setAvailable(validateResult)
+
+    setTimeout(() => {
+      inputRefs.current.forEach((inputRef) => inputRef.blur())
+    })
+  }
+
   useEffect((): (() => void) => {
     const handleKeyDown = (e: KeyboardEvent) => {
+      console.log('handleKeyDown fired!')
       if (e.code === 'Backspace' && code[0] !== '') {
         let currIndex = -1
 
@@ -139,6 +174,7 @@ const CodeStep: FC<Props> = (props: Props) => {
               }} // 设置当前 focus 的输入框索引
               onBlur={() => setFocusedIndex(-1)} // 失去焦点时清除索引
               onChange={(e) => handleChange(e, index)}
+              onPaste={(e) => handlePaste(e, index)}
             />
             <div
               className={`absolute z-0 bottom-0 w-full h-[1px] border-b ${focusedIndex === index || val ? 'border-main-blue' : 'border-[#E4E3E7]'}`}

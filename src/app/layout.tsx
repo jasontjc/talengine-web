@@ -2,12 +2,13 @@
  * @Author: TangJiaChen tangjiachen@sundear.com
  * @Date: 2024-12-26 16:18:37
  * @LastEditors: TangJiaChen tangjiachen@sundear.com
- * @LastEditTime: 2024-12-31 10:36:09
+ * @LastEditTime: 2025-01-06 16:56:51
  * @FilePath: /talengine-web/src/app/layout.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 import type { Metadata } from 'next'
 import { Outfit } from 'next/font/google'
+import { Toaster } from '@/components/ui/toaster'
 import './globals.css'
 
 const outfit = Outfit({
@@ -27,7 +28,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${outfit.variable} antialiased `}>{children}</body>
+      <body className={`${outfit.variable} antialiased `}>
+        <main>{children}</main>
+        <Toaster />
+      </body>
     </html>
   )
 }

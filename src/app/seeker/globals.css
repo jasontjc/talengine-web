@@ -19,3 +19,39 @@ body {
   height: 100vh;
   font-family: var(--font-outfit);
 }
+
+/* 通用滚动条样式 */
+::-webkit-scrollbar {
+  width: 8px; /* 滚动条的宽度 */
+  height: 8px; /* 滚动条的高度（横向滚动条） */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888; /* 滚动条的颜色 */
+  border-radius: 4px; /* 滚动条的圆角 */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* 滚动条在悬停时的颜色 */
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* 滚动条轨道的颜色 */
+  border-radius: 4px; /* 滚动条轨道的圆角 */
+}
+
+/* Firefox 滚动条样式 */
+* {
+  scrollbar-width: thin; /* 滚动条宽度：thin（细）或 auto（默认） */
+  scrollbar-color: #888 #f1f1f1; /* 滚动条颜色（前景色和背景色） */
+}
+
+/* 强制隐藏滚动条（可选） */
+.hide-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari 和 Edge */
+}
